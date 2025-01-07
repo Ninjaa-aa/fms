@@ -1,4 +1,4 @@
-export type AssetStatus = 'active' | 'idle' | 'warning' | 'critical' | 'outdated';
+export type AssetStatus = 'active' | 'idle' | 'warning' | 'critical' | 'outdated' | 'no-location';
 
 export interface Asset {
   id: string;
@@ -14,6 +14,8 @@ export interface Asset {
   phone?: string;
   eta?: string;
   lastUpdate?: string;
+  isLive?: boolean;
+  hasNoLocation?: boolean;
 }
 
 export const assets: Asset[] = [
@@ -22,7 +24,8 @@ export const assets: Asset[] = [
     title: "Bryce's Trailer",
     model: "Hyundai Translead C...",
     details: "No location Data",
-    status: "outdated",
+    status: "no-location",
+    hasNoLocation: true,
     location: {
       lat: 37.7749,
       lng: -122.4194,
@@ -35,6 +38,7 @@ export const assets: Asset[] = [
     model: "Hyundai Translead C...",
     details: "John Doe",
     status: "active",
+    isLive: true,
     phone: "6452765276542",
     location: {
       lat: 37.7858,
@@ -49,6 +53,7 @@ export const assets: Asset[] = [
     model: "Volvo",
     details: "John Doe",
     status: "warning",
+    isLive: true,
     phone: "6452765276542",
     location: {
       lat: 37.8044,
@@ -80,7 +85,7 @@ export const assets: Asset[] = [
       lng: -122.2524,
       address: "SE of Oakland, CA"
     },
-    status: "idle",
+    status: "outdated",
     lastUpdate: "08/15/24"
   }
 ];
